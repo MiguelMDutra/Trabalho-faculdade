@@ -34,6 +34,6 @@ public class Pesquisador {
     }
 
         public String toString(){
-        return "O pesquisador de nome " +nome+ " e nacionalidade " + nacionalidade + ", tinha " + idade + " anos.";
+        return "O pesquisador de nome " +nome+ " e nacionalidade " + nacionalidade + ", tem " + idade + " anos.";
         }
 }
