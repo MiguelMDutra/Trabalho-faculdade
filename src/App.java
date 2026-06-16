@@ -7,14 +7,37 @@ public class App {
         BufferedReader leitor = new BufferedReader(
         new InputStreamReader(System.in));
     
+    boolean criarPesquisador=false;
+    boolean criarEspecie=false;
+    boolean sair=false;
     
-    boolean criarPesquisador=true;
-    boolean criarEspecie=true;
-    
+    System.out.println("Bem vindo! O que você gostaria? 0-sair; 1- criar pesquisador; 2-Criar dinossauro; 3-ver pesquisadores; 4-ver dinossauros");
+    String direcionador = leitor.readLine();
+    int direcionadorNumero = Integer.parseInt(direcionador);
+    switch (direcionadorNumero) {
+    case 0:
+        sair = true;
+        break;
+
+    case 1:
+        criarPesquisador = true;
+        break;
+
+    case 2:
+        criarEspecie = true;
+        break;
+
+    default:
+        break;
+}
+
+
+
+
     Pesquisador[] pesquisadoresArray = new Pesquisador[20];
     int qtdPesquisadores = 0;
 
-
+    while(sair==false){
     if(criarPesquisador==true){
         boolean nomeValido= false;
         boolean nacionalidadeValida=false;
@@ -44,7 +67,7 @@ public class App {
             System.out.println("Digite a idade do pesquisador");
             String idade= leitor.readLine();
             idadeNumero = Integer.parseInt(idade);
-                if(idadeNumero<0 && idadeNumero>100){
+                if(idadeNumero<0 || idadeNumero>100){
                     System.out.println("Coloque uma idade válida.");
                 } else {
                     idadeValida = true;
@@ -54,10 +77,9 @@ public class App {
     pesquisadoresArray[qtdPesquisadores] =
     new Pesquisador(nome, nacionalidade, idadeNumero);
     System.out.println(pesquisadoresArray[qtdPesquisadores]);
-    qtdPesquisadores++;  
+    qtdPesquisadores++;
+    criarPesquisador=false;  
     }
-
-
         if(criarEspecie==true){
         boolean especieValida= false;
         boolean pesoValido=false;
@@ -83,17 +105,17 @@ public class App {
         } while(pesoValido== false){
             System.out.println("Digite o peso do dinossauro(em toneladas)");
             String pesagem= leitor.readLine();
-            peso = Integer.parseInt(pesagem);
-                if(peso<=0 && peso>=100){
+            peso = Double.parseDouble(pesagem);
+                if(peso<=0 || peso>=100){
                     System.out.println("Coloque um peso válido.");
                 } else {
                     pesoValido = true;
                 }
         }while(alturaValida== false){
             System.out.println("Digite a altura do dinossauro(em metros)");
-            String alturaLida= leitor.readLine();
-            altura = Integer.parseInt(alturaLida);
-                if(altura<=0 && altura>=100){
+            String alturaLida = leitor.readLine();
+            altura = Double.parseDouble(alturaLida);
+                if(altura<=0 || altura>=100){
                     System.out.println("Coloque uma altura válida.");
                 } else {
                     alturaValida = true;
@@ -101,8 +123,8 @@ public class App {
         }while(comprimentoValido== false){
             System.out.println("Digite o comprimento do dinossauro(em metros)");
             String comprimentoLido= leitor.readLine();
-            comprimento = Integer.parseInt(comprimentoLido);
-                if(comprimento<0 && comprimento>=100){
+            comprimento = Double.parseDouble(comprimentoLido);
+                if(comprimento<0 || comprimento>=100){
                     System.out.println("Coloque um comprimento válida.");
                 } else {
                     comprimentoValido = true;
@@ -120,6 +142,10 @@ public class App {
         
     DinossauroEspecie dinossauro = new DinossauroEspecie(especie, pesquisador, peso, altura, comprimento, anoDescoberta);
     System.out.print(dinossauro);
+    criarEspecie=false;
     }
 } 
+    System.out.println("Muito obrigado!");
+
+}
 }
