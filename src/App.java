@@ -6,12 +6,19 @@ public class App {
     public static void main(String[] args) throws IOException {
         BufferedReader leitor = new BufferedReader(
         new InputStreamReader(System.in));
+    
+    
     boolean criarPesquisador=true;
+    boolean criarEspecie=true;
+    
+    Pesquisador[] pesquisadoresArray = new Pesquisador[20];
+    int qtdPesquisadores = 0;
 
-    boolean nomeValido= false;
-    boolean nacionalidadeValida=false;
-    boolean idadeValida=false;
+
     if(criarPesquisador==true){
+        boolean nomeValido= false;
+        boolean nacionalidadeValida=false;
+        boolean idadeValida=false;
         String nome = "";
         String nacionalidade = "";
         int idadeNumero = 0;
@@ -38,15 +45,81 @@ public class App {
             String idade= leitor.readLine();
             idadeNumero = Integer.parseInt(idade);
                 if(idadeNumero<0 && idadeNumero>100){
-                    System.out.println("Coloque uma idade válide.");
+                    System.out.println("Coloque uma idade válida.");
                 } else {
                     idadeValida = true;
                 }
         }
-
-    Pesquisador p1 = new Pesquisador(nome, nacionalidade, idadeNumero);
-    System.out.print(p1);
+        /*macete da professora(java podia ter o push...)*/
+    pesquisadoresArray[qtdPesquisadores] =
+    new Pesquisador(nome, nacionalidade, idadeNumero);
+    System.out.println(pesquisadoresArray[qtdPesquisadores]);
+    qtdPesquisadores++;  
     }
 
-}
+
+        if(criarEspecie==true){
+        boolean especieValida= false;
+        boolean pesoValido=false;
+        boolean alturaValida=false;
+        boolean comprimentoValido=false;
+        boolean anoDescobertaValida=false;
+
+        String especie="Alguma, certamente.";
+        Pesquisador pesquisador = pesquisadoresArray[0];
+        double peso=1; 
+        double altura = 0.1;
+        double comprimento = 0.1;
+        int anoDescoberta = 1823;
+        
+        while(especieValida == false){
+                System.out.println("Digite a espécie do dinossauro");
+                especie = leitor.readLine();
+                if(especie.length()<3||!especie.matches("[a-zA-ZÀ-ÿ ]+")){
+                    System.out.println("Coloque um nome de espécie válido. Só letras e sem caracteres especiais");
+                } else {
+                    especieValida = true;
+                }
+        } while(pesoValido== false){
+            System.out.println("Digite o peso do dinossauro(em toneladas)");
+            String pesagem= leitor.readLine();
+            peso = Integer.parseInt(pesagem);
+                if(peso<=0 && peso>=100){
+                    System.out.println("Coloque um peso válido.");
+                } else {
+                    pesoValido = true;
+                }
+        }while(alturaValida== false){
+            System.out.println("Digite a altura do dinossauro(em metros)");
+            String alturaLida= leitor.readLine();
+            altura = Integer.parseInt(alturaLida);
+                if(altura<=0 && altura>=100){
+                    System.out.println("Coloque uma altura válida.");
+                } else {
+                    alturaValida = true;
+                }
+        }while(comprimentoValido== false){
+            System.out.println("Digite o comprimento do dinossauro(em metros)");
+            String comprimentoLido= leitor.readLine();
+            comprimento = Integer.parseInt(comprimentoLido);
+                if(comprimento<0 && comprimento>=100){
+                    System.out.println("Coloque um comprimento válida.");
+                } else {
+                    comprimentoValido = true;
+                }
+        }while(anoDescobertaValida== false){
+            System.out.println("Digite o ano de descoberta do dinossauro");
+            String anoDescobertaLida= leitor.readLine();
+            anoDescoberta = Integer.parseInt(anoDescobertaLida);
+                if(anoDescoberta<=1700 || anoDescoberta>=2026){
+                    System.out.println("Coloque um ano válido. " +anoDescoberta+ " nem faz sentido");
+                } else {
+                    anoDescobertaValida = true;
+                }
+        }
+        
+    DinossauroEspecie dinossauro = new DinossauroEspecie(especie, pesquisador, peso, altura, comprimento, anoDescoberta);
+    System.out.print(dinossauro);
+    }
+} 
 }

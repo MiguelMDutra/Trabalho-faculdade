@@ -11,7 +11,7 @@ public class DinossauroEspecie {
         this.pesquisador= pesquisador;
         this.peso=peso;
         this.altura=altura;
-        this.comprimento=altura;
+        this.comprimento=comprimento;
         this.anoDescoberta=anoDescoberta;
     }
 
