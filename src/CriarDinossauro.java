@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class CriarDinossauro {
-    public static void criarDinossauro(Pesquisador[] pesquisadoresArray) throws Exception {
+    public static void criarDinossauro(Pesquisador[] pesquisadoresArray, DinossauroEspecie[] dinossauroArray, int qtdDinos) throws Exception {
         BufferedReader leitor = new BufferedReader(
         new InputStreamReader(System.in));
         boolean especieValida= false;
@@ -66,7 +66,7 @@ public class CriarDinossauro {
                 }
         }
         
-    DinossauroEspecie dinossauro = new DinossauroEspecie(especie, pesquisador, peso, altura, comprimento, anoDescoberta);
-    System.out.print(dinossauro);
+    dinossauroArray[qtdDinos] = new DinossauroEspecie(especie, pesquisador, peso, altura, comprimento, anoDescoberta);
+    System.out.println("Adicionado com sucesso!");
     }
 }

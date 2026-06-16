@@ -43,7 +43,7 @@ public class CriarPesquisador{
         /*macete da professora(java podia ter o push...)*/
     pesquisadoresArray[qtdPesquisadores] =
     new Pesquisador(nome, nacionalidade, idadeNumero);
-    System.out.println(pesquisadoresArray[qtdPesquisadores]);
+    System.out.println("Adicionado com sucesso!");
     qtdPesquisadores++;
     return qtdPesquisadores;
     }
