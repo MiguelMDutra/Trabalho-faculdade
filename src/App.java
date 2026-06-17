@@ -3,79 +3,113 @@ import java.io.InputStreamReader;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        BufferedReader leitor = new BufferedReader(
-        new InputStreamReader(System.in));
-    
-    
-    
-    Pesquisador[] pesquisadoresArray = new Pesquisador[20];
-    int qtdPesquisadores = 0;
+        BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
 
-    DinossauroEspecie[] dinossauroArray = new DinossauroEspecie[20];
-    int qtdDinos = 0;
-    
-    int direcionadorNumero=-1;
-    boolean primeiraVez=true;
-    while(direcionadorNumero!=0){
-    if(primeiraVez)System.out.println("Bem vindo! O que você gostaria? 0-sair; 1- criar pesquisador; 2-Criar dinossauro");
-    else  System.out.println("E agora, O que você gostaria? 0-sair; 1- criar pesquisador; 2-Criar dinossauro; 3-ver pesquisadores e outras métricas; 4-ver dinossauros e outras métricas");
-    
-    String direcionador = leitor.readLine();
-    direcionadorNumero = Integer.parseInt(direcionador);
+        Pesquisador[] pesquisadoresArray = new Pesquisador[20];
+        int qtdPesquisadores = 0;
 
-    while(primeiraVez && (direcionadorNumero<0 || direcionadorNumero>=3)){
-        System.out.println("digite um número válido");
-        direcionador = leitor.readLine();
-        direcionadorNumero = Integer.parseInt(direcionador);
-    }primeiraVez=false;
+        DinossauroEspecie[] dinossauroArray = new DinossauroEspecie[20];
+        int qtdDinos = 0;
 
-    
-    
-    String tipoBusca;
-    int tipoBuscaNumero;
+        int direcionadorNumero = -1;
+        boolean primeiraVez = true;
 
-    switch (direcionadorNumero) {
-    case 0:
-        break;
+        while (direcionadorNumero != 0) {
+            System.out.println("=".repeat(60));
+            if (primeiraVez) {
+                System.out.println("  Bem vindo!");
+                System.out.println("  [0] Sair");
+                System.out.println("  [1] Criar pesquisador");
+            } else {
+                System.out.println("  O que você gostaria de fazer?");
+                System.out.println("  [0] Sair");
+                System.out.println("  [1] Criar pesquisador");
+                System.out.println("  [2] Criar dinossauro");
+                System.out.println("  [3] Ver pesquisadores e outras métricas");
+                System.out.println("  [4] Ver dinossauros e outras métricas");
+            }
+            System.out.println("=".repeat(60));
+            System.out.print("  > ");
 
-    case 1:
-        CriarPesquisador.cadastrarPesquisador(pesquisadoresArray, qtdPesquisadores);
-        break;
-    case 2:
-        CriarDinossauro.criarDinossauro(pesquisadoresArray, dinossauroArray, qtdDinos);
-        break;
-    case 3:
-        System.out.println("O que você vai querer? uma busca mais geral ou você quer escrever? 1-4 são só displays de cada pesquisador e do 5-9 é mais dinâmico e você escreve os parâmetros.");
-       System.out.print(
-        "1-Ver todos os atributos de todos pesquisadores\n \n" +
-        "2-Ver o nome de todos pesquisadores\n \n" +
-        "3-Ver a nacionalidade de todos pesquisadores\n \n" +
-        "4-Ver a idade de todos pesquisadores\n \n" +
-        "5-Buscar pesquisador por nome\n \n" +
-        "6-Buscar pesquisador por nacionalidade\n \n" +
-        "7-Buscar pesquisador por idade\n \n"
-        );
-        
-        tipoBusca = leitor.readLine();
-        tipoBuscaNumero = Integer.parseInt(tipoBusca);
-        while(tipoBuscaNumero>=0&&tipoBuscaNumero<=7){
-            tipoBusca = leitor.readLine();
-            tipoBuscaNumero = Integer.parseInt(tipoBusca);
+            String direcionador = leitor.readLine();
+            direcionadorNumero = Integer.parseInt(direcionador);
+
+            while (primeiraVez && (direcionadorNumero < 0 || direcionadorNumero >= 2)) {
+                System.out.println("  !! Digite um número válido: ");
+                System.out.print("  > ");
+                direcionador = leitor.readLine();
+                direcionadorNumero = Integer.parseInt(direcionador);
+            }
+            primeiraVez = false;
+
+            String tipoBusca;
+            int tipoBuscaNumero;
+
+            switch (direcionadorNumero) {
+                case 0:
+                    break;
+
+                case 1:
+                    qtdPesquisadores = CriarPesquisador.cadastrarPesquisador(pesquisadoresArray, qtdPesquisadores);
+                    System.out.println(qtdPesquisadores);
+                    break;
+
+                case 2:
+                    CriarDinossauro.criarDinossauro(pesquisadoresArray, dinossauroArray, qtdDinos);
+                    System.out.println(qtdDinos);
+                    break;
+
+                case 3:
+                    System.out.println("=".repeat(60));
+                    System.out.println("  BUSCA DE PESQUISADORES");
+                    System.out.println("-".repeat(60));
+                    System.out.println("  Exibição geral:");
+                    System.out.println("    [1] Ver todos os atributos de todos os pesquisadores");
+                    System.out.println("-".repeat(60));
+                    System.out.println("  Busca interativa:");
+                    System.out.println("    [2] Buscar por nome");
+                    System.out.println("    [3] Buscar por nacionalidade");
+                    System.out.println("    [4] Buscar por idade exata");
+                    System.out.println("    [5] Buscar por idade mínima (esse valor ou mais velhos)");
+                    System.out.println("    [6] Buscar por idade máxima (esse valor ou mais novos)");
+                    System.out.println("=".repeat(60));
+                    System.out.print("  > ");
+
+                    tipoBusca = leitor.readLine();
+                    tipoBuscaNumero = Integer.parseInt(tipoBusca);
+
+                    while (tipoBuscaNumero < 0 && tipoBuscaNumero > 6) {
+                        System.out.println("  !! Digite um número entre 1 e 9:");
+                        System.out.print("  > ");
+                        tipoBusca = leitor.readLine();
+                        tipoBuscaNumero = Integer.parseInt(tipoBusca);
+                    }
+
+                    System.out.println("\n  Opção [" + tipoBuscaNumero + "] selecionada. Buscando...\n");
+
+                    if (tipoBuscaNumero==1) {
+                        BuscaPesquisador.buscaPesquisador(pesquisadoresArray, tipoBuscaNumero);
+                    } else if (tipoBuscaNumero > 1 && tipoBuscaNumero <= 6) {
+                        System.out.print("  Digite o valor para busca: ");
+                        String busca = leitor.readLine();
+                        BuscaPesquisador.buscaPesquisadorInterativo(pesquisadoresArray, tipoBuscaNumero, busca);
+                    }
+                    break;
+
+                case 4:
+                    tipoBusca = leitor.readLine();
+                    tipoBuscaNumero = Integer.parseInt(tipoBusca);
+                    BuscaDinossauro.buscaDinossauro(pesquisadoresArray, dinossauroArray, direcionadorNumero);
+                    break;
+
+                default:
+                    System.out.println("  !! Digite um número válido.");
+                    break;
+            }
         }
-        if(tipoBuscaNumero>0 && tipoBuscaNumero<5) BuscaPesquisador.buscaPesquisador(pesquisadoresArray, tipoBuscaNumero);
-        else if(tipoBuscaNumero>4 && tipoBuscaNumero<=7) BuscaPesquisador.buscaPesquisadorInterativo(pesquisadoresArray, tipoBuscaNumero);
-        break;
-    case 4:
-        tipoBusca = leitor.readLine();
-        tipoBuscaNumero = Integer.parseInt(tipoBusca);
-       BuscaDinossauro.buscaDinossauro(pesquisadoresArray, dinossauroArray, direcionadorNumero);
-        break;
-    default:
-        System.out.println("digite um número válido");
-        break;
-}
-}  
-    System.out.println("Muito obrigado!");
 
-}
+        System.out.println("=".repeat(60));
+        System.out.println("  Muito obrigado! Até logo.");
+        System.out.println("=".repeat(60));
+    }
 }

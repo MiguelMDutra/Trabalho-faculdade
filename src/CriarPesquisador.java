@@ -40,11 +40,28 @@ public class CriarPesquisador{
                     idadeValida = true;
                 }
         }
-        /*macete da professora(java podia ter o push...)*/
-    pesquisadoresArray[qtdPesquisadores] =
-    new Pesquisador(nome, nacionalidade, idadeNumero);
-    System.out.println("Adicionado com sucesso!");
-    qtdPesquisadores++;
-    return qtdPesquisadores;
+        
+        /*Não sabia do equals... IA q falou p eu usar! também fiquei travado tentando achar um 
+        jeito sem criar uma variavel e n consegui e pedi p IA(criei de qualquer jeito)*/
+        boolean jaExiste = false;
+        for (int i = 0; i < pesquisadoresArray.length; i++) {
+            if (pesquisadoresArray[0] != null) {
+            if (pesquisadoresArray[i].getNome().equals(nome) &&
+            pesquisadoresArray[i].getNacionalidade().equals(nacionalidade) &&
+            pesquisadoresArray[i].getIdade() == idadeNumero) {
+            jaExiste = true;
+            break;
+             }
+            }
+        }
+
+        if (jaExiste) {
+            System.out.println("ERRO: Falta de criatividade! Muda pelo menos um atributo...");
+        } else {
+        pesquisadoresArray[qtdPesquisadores] = new Pesquisador(nome, nacionalidade, idadeNumero);
+        System.out.println("Adicionado com sucesso!");
+        qtdPesquisadores++;
+        }
+        return qtdPesquisadores;
     }
     }

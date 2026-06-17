@@ -1,55 +1,54 @@
 public class BuscaPesquisador {
+    /*ideia do claude*/
+    static void imprimirCabecalho() {
+    System.out.println(String.format("%-30s | %-30s | %s", "NOME", "NACIONALIDADE", "IDADE"));
+    System.out.println("-".repeat(30) + "-+-" + "-".repeat(30) + "-+--------");
+    }
     static void buscaPesquisador(Pesquisador[] pesquisadoresArray, int tipo){
         if(pesquisadoresArray[0]==null){
             System.out.println("Não temos pesquisadores aqui ainda... quem sabe você possa adicionar um?");
         } else if(tipo==1){
+            imprimirCabecalho();
             for(int i=0;i<pesquisadoresArray.length;i++){
             if(pesquisadoresArray[i]!=null)
           System.out.println(pesquisadoresArray[i]);
-        }
-        } else if(tipo==2){
-            for(int i=0;i<pesquisadoresArray.length;i++){
-            if(pesquisadoresArray[i]!=null)
-          System.out.println(pesquisadoresArray[i].getNome());
-        }
-        }
-        else if(tipo==3){
-            for(int i=0;i<pesquisadoresArray.length;i++){
-            if(pesquisadoresArray[i]!=null)
-          System.out.println(pesquisadoresArray[i].getNacionalidade());
-        }
-        }
-        else if(tipo==4){
-            for(int i=0;i<pesquisadoresArray.length;i++){
-            if(pesquisadoresArray[i]!=null)
-          System.out.println(pesquisadoresArray[i].getIdade());
-        }
-        }
+        }}
     }
-    static void buscaPesquisadorInterativo(Pesquisador[] pesquisadoresArray, int tipo){
+    static void buscaPesquisadorInterativo(Pesquisador[] pesquisadoresArray, int tipo, String busca){
         switch (tipo) {
-            case 5:
+            case 2:
+                imprimirCabecalho();
                 for(int i=0;i<pesquisadoresArray.length;i++){
-                if(pesquisadoresArray[i]!=null)
+                if(pesquisadoresArray[i]!=null && pesquisadoresArray[i].getNome().toLowerCase().contains(busca))
                  System.out.println(pesquisadoresArray[i]);
             }
                 break;
+            case 3:
+                imprimirCabecalho();
+                for(int i=0;i<pesquisadoresArray.length;i++){
+                if(pesquisadoresArray[i]!=null && pesquisadoresArray[i].getNacionalidade().toLowerCase().contains(busca))
+                System.out.println(pesquisadoresArray[i]);
+            }
+            break;
+            case 4:
+                imprimirCabecalho();
+                for(int i=0;i<pesquisadoresArray.length;i++){
+                if(pesquisadoresArray[i]!=null && pesquisadoresArray[i].getIdade()==Integer.parseInt(busca))
+                System.out.println(pesquisadoresArray[i]);
+            }
+            break;
+            case 5:
+                imprimirCabecalho();
+                for(int i=0;i<pesquisadoresArray.length;i++){
+                if(pesquisadoresArray[i]!=null && pesquisadoresArray[i].getIdade()>=Integer.parseInt(busca))
+                System.out.println(pesquisadoresArray[i]);
+            }
+            break;
             case 6:
+                imprimirCabecalho();
                 for(int i=0;i<pesquisadoresArray.length;i++){
-                if(pesquisadoresArray[i]!=null)
-                System.out.println(pesquisadoresArray[i].getNome());
-            }
-            break;
-            case 7:
-                for(int i=0;i<pesquisadoresArray.length;i++){
-                if(pesquisadoresArray[i]!=null)
-                System.out.println(pesquisadoresArray[i].getNacionalidade());
-            }
-            break;
-            case 8:
-                for(int i=0;i<pesquisadoresArray.length;i++){
-                if(pesquisadoresArray[i]!=null)
-                System.out.println(pesquisadoresArray[i].getIdade());
+                if(pesquisadoresArray[i]!=null && pesquisadoresArray[i].getIdade()<=Integer.parseInt(busca))
+                System.out.println(pesquisadoresArray[i]);
             }
             break;
             default:

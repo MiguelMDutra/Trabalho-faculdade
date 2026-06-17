@@ -33,7 +33,8 @@ public class Pesquisador {
         this.idade=idade;
     }
 
-        public String toString(){
-        return "O pesquisador de nome " +nome+ " e nacionalidade " + nacionalidade + ", tem " + idade + " anos.";
-        }
+    /*claude neles pra formatar isso auqi*/
+        public String toString() {
+    return String.format("%-30s | %-30s | %d anos", nome, nacionalidade, idade);
+    }
 }
