@@ -60,6 +60,7 @@ public class App {
                     break;
 
                 case 3:
+                    /*claude começo*/
                     System.out.println("=".repeat(60));
                     System.out.println("  BUSCA DE PESQUISADORES");
                     System.out.println("-".repeat(60));
@@ -74,6 +75,7 @@ public class App {
                     System.out.println("    [6] Buscar por idade máxima (esse valor ou mais novos)");
                     System.out.println("=".repeat(60));
                     System.out.print("  > ");
+                    /*claude fim*/
 
                     tipoBusca = leitor.readLine();
                     tipoBuscaNumero = Integer.parseInt(tipoBusca);
@@ -88,7 +90,7 @@ public class App {
                     System.out.println("\n  Opção [" + tipoBuscaNumero + "] selecionada. Buscando...\n");
 
                     if (tipoBuscaNumero==1) {
-                        BuscaPesquisador.buscaPesquisador(pesquisadoresArray, tipoBuscaNumero);
+                        BuscaPesquisador.buscaPesquisador(pesquisadoresArray);
                     } else if (tipoBuscaNumero > 1 && tipoBuscaNumero <= 6) {
                         System.out.print("  Digite o valor para busca: ");
                         String busca = leitor.readLine();
@@ -96,11 +98,49 @@ public class App {
                     }
                     break;
 
-                case 4:
+               // App.java - case 4
+                
+               case 4:
+                /*claude começo*/
+                    System.out.println("=".repeat(60));
+                    System.out.println("  BUSCA DE DINOSSAUROS");
+                    System.out.println("-".repeat(60));
+                    System.out.println("  Exibição geral:");
+                    System.out.println("    [1] Ver todos os dinossauros");
+                    System.out.println("-".repeat(60));
+                    System.out.println("  Busca interativa:");
+                    System.out.println("    [2] Buscar por espécie");
+                    System.out.println("    [3] Buscar por peso mínimo (esse valor ou mais pesados)");
+                    System.out.println("    [4] Buscar por peso máximo (esse valor ou mais leves)");
+                    System.out.println("    [5] Buscar por comprimento mínimo (esse valor ou maiores)");
+                    System.out.println("    [6] Buscar por comprimento máximo (esse valor ou menores)");
+                    System.out.println("    [7] Buscar por altura máxima (esse valor ou menores)");
+                    System.out.println("    [8] Buscar por altura mínima (esse valor ou maiores)");
+                    System.out.println("    [9] Buscar por ano de descoberta mínimo");
+                    System.out.println("    [10] Buscar por ano de descoberta máximo");
+                    System.out.println("=".repeat(60));
+                    System.out.print("  > ");
+                /*claude fim*/
                     tipoBusca = leitor.readLine();
                     tipoBuscaNumero = Integer.parseInt(tipoBusca);
-                    BuscaDinossauro.buscaDinossauro(pesquisadoresArray, dinossauroArray, direcionadorNumero);
-                    break;
+
+                    while (tipoBuscaNumero < 1 || tipoBuscaNumero > 10) {
+                    System.out.println("  !! Digite um número entre 1 e 10:");
+                    System.out.print("  > ");
+                    tipoBusca = leitor.readLine();
+                    tipoBuscaNumero = Integer.parseInt(tipoBusca);
+                }
+
+                System.out.println("\n  Opção [" + tipoBuscaNumero + "] selecionada. Buscando...\n");
+
+                if (tipoBuscaNumero == 1) {
+                 BuscaDinossauro.buscaDino(pesquisadoresArray, dinossauroArray);
+                } else if (tipoBuscaNumero >= 2 && tipoBuscaNumero <= 10) {
+                System.out.print("  Digite o valor para busca: ");
+                String busca = leitor.readLine();
+                BuscaDinossauro.buscaDinossauro(pesquisadoresArray, dinossauroArray, tipoBuscaNumero, busca);
+                }
+                break;
 
                 default:
                     System.out.println("  !! Digite um número válido.");

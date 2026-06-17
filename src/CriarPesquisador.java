@@ -43,9 +43,11 @@ public class CriarPesquisador{
         
         /*Não sabia do equals... IA q falou p eu usar! também fiquei travado tentando achar um 
         jeito sem criar uma variavel e n consegui e pedi p IA(criei de qualquer jeito)*/
+
+        //tava com um erro tb mas tinha dado mole(peguei c o claude de qualquer forma)
         boolean jaExiste = false;
         for (int i = 0; i < pesquisadoresArray.length; i++) {
-            if (pesquisadoresArray[0] != null) {
+            if (pesquisadoresArray[i] != null) {
             if (pesquisadoresArray[i].getNome().equals(nome) &&
             pesquisadoresArray[i].getNacionalidade().equals(nacionalidade) &&
             pesquisadoresArray[i].getIdade() == idadeNumero) {

@@ -4,15 +4,15 @@ public class BuscaPesquisador {
     System.out.println(String.format("%-30s | %-30s | %s", "NOME", "NACIONALIDADE", "IDADE"));
     System.out.println("-".repeat(30) + "-+-" + "-".repeat(30) + "-+--------");
     }
-    static void buscaPesquisador(Pesquisador[] pesquisadoresArray, int tipo){
+    static void buscaPesquisador(Pesquisador[] pesquisadoresArray){
         if(pesquisadoresArray[0]==null){
             System.out.println("Não temos pesquisadores aqui ainda... quem sabe você possa adicionar um?");
-        } else if(tipo==1){
+        }
             imprimirCabecalho();
             for(int i=0;i<pesquisadoresArray.length;i++){
             if(pesquisadoresArray[i]!=null)
           System.out.println(pesquisadoresArray[i]);
-        }}
+        }
     }
     static void buscaPesquisadorInterativo(Pesquisador[] pesquisadoresArray, int tipo, String busca){
         switch (tipo) {

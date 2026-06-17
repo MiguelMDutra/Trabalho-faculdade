@@ -55,7 +55,9 @@ public class DinossauroEspecie {
         return anoDescoberta;
     }
 
-    public String toString(){
-        return "O dinossauro de espécie " +especie+ ", que foi descoberta pelo " + pesquisador.getNome() + ", tinha " + peso + " toneladas, " + altura + " metros de altura, " + comprimento + " metros de comprimento e foi descoberto em " + anoDescoberta + ".";
+    // claude
+    public String toString() {
+     return String.format("  %-20s | %-15s | %-6.1f | %-6.1f | %-10.1f | %d",
+            especie, pesquisador.getNome(), peso, altura, comprimento, anoDescoberta);
     }
 }
